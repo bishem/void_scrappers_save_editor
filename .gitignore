@@ -1,0 +1,5 @@
+void_scrappers_save_editor
+void_scrappers_save
+.*.swp
+*.d
+*.o

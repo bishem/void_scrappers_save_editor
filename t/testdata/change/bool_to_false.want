@@ -1,0 +1,4 @@
+62c62
+<                 boss_minimum_health	0x032c=true
+---
+>                 boss_minimum_health	0x032c=false
