@@ -1,4 +1,4 @@
-#!/bin/ksh
+#!/bin/bash
 #
 # basic_tests.t
 # Make sure our code is up-to-date and doesn't have debug things.

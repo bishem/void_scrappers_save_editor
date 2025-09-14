@@ -1,4 +1,4 @@
-Void Scrappers Save Editor
+Void Scrappers Save Editor (linux)
 ==========================
 Savegame editor for [Void Scrappers](https://voidscrappers.com).
 

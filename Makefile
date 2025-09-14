@@ -4,12 +4,27 @@
 # Created 20250427
 # Last Modified 20250428
 
-COPTS      = -Wall --pedantic -Wextra -Werror
-NOMAN      = noman
-PROG       = void_scrappers_save_editor
-SRCS       = modify.c pop.c void_scrappers_save_editor.c
 
-test: ${PROG}
+# Compiler and flags
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -pedantic
+
+# Program name and sources
+PROG = void_scrappers_save_editor
+SRCS = modify.c pop.c void_scrappers_save_editor.c
+
+OBJS = $(SRCS:.c=.o)
+
+all: $(PROG)
+
+$(PROG): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $(OBJS)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+test: $(PROG)
 	prove -It --directives
 
-.include <bsd.prog.mk>
+clean:
+	rm -f $(PROG) $(OBJS)

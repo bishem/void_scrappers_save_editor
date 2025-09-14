@@ -1,4 +1,4 @@
-#!/bin/ksh
+#!/bin/bash
 #
 # change.t
 # Make sure we can change a file ok

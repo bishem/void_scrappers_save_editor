@@ -6,9 +6,10 @@
  * Last Modified 20250428
  */
 
-#include <sys/mman.h>
 
+#include <sys/mman.h>
 #include <fcntl.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -30,8 +31,9 @@ int willset;
 void
 usage(void)
 {
+        extern char *program_invocation_name;
         fprintf(stderr, "usage: %s savefile [offset=value...]\n",
-                getprogname());
+                program_invocation_name ? program_invocation_name : "void_scrappers_save_editor");
         exit(1);
 }
 
@@ -135,11 +137,9 @@ main(int argc, char **argv)
                 errx(2, "need a savefile");
         willset = NULL != argv[2];
 
-        unveil(argv[1], IFSET("rw", "r"));
-        if (willset)
-                pledge("stdio rpath wpath", "");
-        else
-                pledge("stdio rpath", "");
+
+        /* unveil and pledge are OpenBSD-specific; stubbed out for Linux */
+        (void)argv;
 
         /* Get hold of the file. */
         if (-1 == (fd = open(argv[1], IFSET(O_RDWR, O_RDONLY))))
@@ -153,7 +153,8 @@ main(int argc, char **argv)
         if (-1 == close(fd))
                 err(6, "close");
 
-        pledge("stdio", "");
+
+        /* pledge stub */
 
         /* Make the changes requested. */
         for (i = 2; i < argc; ++i)

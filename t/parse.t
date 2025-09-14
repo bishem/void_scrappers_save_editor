@@ -1,4 +1,4 @@
-#!/bin/ksh
+#!/bin/bash
 #
 # parse.t
 # Make sure we can read a file ok

@@ -1,4 +1,4 @@
-#!/bin/ksh
+#!/bin/bash
 #
 # errors.t
 # Make sure we catch errors
